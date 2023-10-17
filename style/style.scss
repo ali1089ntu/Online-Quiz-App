@@ -1,0 +1,44 @@
+$primary: #34495e;
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Plus+Jakarta+Sans:wght@300;400&display=swap');
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+    flex: 1 0 auto;
+    height: 100%;
+}
+
+#timeremain{
+    font-weight: 300;
+}
+
+#quesdiv{
+    box-shadow: 0px 0px 5px gray;
+    overflow: hidden;
+}
+
+#instruction{
+    box-shadow: 0px 0px 5px gray;
+}
+
+.headingexam{
+    font-family: 'Cinzel';
+}
+
+#timeremain{
+    font-weight: bold;
+}
+
+.fontchng{
+    font-family: 'Plus Jakarta Sans';
+}
+
+#result{
+    box-shadow: 0px 0px 5px gray;
+}

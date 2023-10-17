@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <!---Custom CSS Link--->
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <!---Header--->
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Online Exam</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <!---Main--->
+
+    <main class="d-flex align-items-center justify-content-center">
+
+        <div class="container">
+            <div class="row align-content-center justify-content-center">
+                <div class="col-md-8 col-12">
+
+                    <!---Top Div Heading & Time--->
+
+                    <div class="w-100 pt-3 pb-3 d-flex align-items-center justify-content-center bg-primary" id="firstdiv">
+                            <h5 class="text-center text-white pt-1 headingexam">Online Exam</h5>
+                            <h5 class="text-center text-white offset-7 pt-1 headingexam" id="timeheaddiv">Time : <span class="bg-white text-black text-center ps-3 pe-3 pb-1 pt-1" id="timeremain"></span></h5>
+                            <button class="text-white border-0 bg-success p-2 rounded offset-7" id="startbtn" onclick="startquiz()">Start Quiz</button>
+                    </div>
+
+                    <!---Instructions--->
+
+                    <div class="p-4" id="instruction">
+                        <div>
+                            <h3 class="px-3"><u>Instructions</u></h3>
+                            <ol style="list-style-type: lower-roman;">
+                            <li><h6>Total time for each question is 60 sec.</h6></li>
+                            <li><h6>Each question carries 5 equal marks.</h6></li>
+                            <li><h6>If the time limit is over, then it automatically moves to the next question.</h6></li>
+                            <li><h6>Not Attempted Questions considered as wrong.</h6></li>
+                            <li><h6>No Negative Marking.</h6></li>
+                            <li><h6>Students must have stable internet connection preferably with UPS backup.</h6></li>
+                            </ol>
+                        </div>
+                    </div>  
+
+                    <!---Exam Result Declaration--->
+
+                    <div class="p-4" id="result">
+                        <div id="decresult">
+                            <h3>Exam Result: </h3>
+                            <h6>Total Marks : <span id="resulttotalmarks"> </span></h6>
+                            <h6>Total Questions : <span id="resulttotalquestion"></span></h6>
+                            <h6>No of Questions Attempted : <span id="resultattempt"></span></h6>
+                            <h6>Correct : <span id="resultcorrect"></span></h6>
+                            <h6>Wrong : <span id="resultwrong"></span></h6>
+                            <h6>Marks : <span id="resultmarksget"></span><span>/</span><span id="resultmarkstotal"></span></h6>
+                        </div>
+                        
+                        <div class="pt-3 pb-3">
+                          <button class="text-white border-0 bg-primary p-2 rounded" id="correctansbtn" onclick="correctans()">Show Correct Answers</button>
+                        </div>
+
+                        <div id="answers">
+                          <h6 id="ansshow"></h6>
+                        </div>
+
+                    </div>
+                    
+                    
+                    <!---Question Details Heading (Question No's)--->
+
+                    <div class="w-100 h-auto pt-4 ps-4 pe-3" id="quesdiv">
+
+                        <div class="w-100 text-black d-flex align-items-center pt-4">
+                           <h5 class="fontchng"><span>Question No.</span> <span id="questionno"></span></h5>
+                        </div>
+
+                        <!---Questions--->
+
+                        <div class="w-100 d-flex align-items-center text-black pt-2">
+                            <h5 id="question" class="fontchng"></h5>
+                         </div>
+
+                         <!---Options--->
+                        
+                         <div class="w-75 d-flex gap-2 pt-2">
+                            <input type="radio" id="option1" name="opt" value="a" class="inputcom">
+                            <label for="option1" id="opt1" class="fontchng"></label>
+                         </div>
+
+                         <div class="w-75 d-flex gap-2 pt-2">
+                            <input type="radio" id="option2" name="opt" value="b" class="inputcom">
+                            <label for="option2" id="opt2" class="fontchng"></label>
+                         </div>
+
+                         <div class="w-75 d-flex gap-2 pt-2">
+                            <input type="radio" id="option3" name="opt" value="c" class="inputcom">
+                            <label for="option3" id="opt3" class="fontchng"></label>
+                         </div>
+
+                         <div class="w-75 d-flex gap-2 pt-2">
+                            <input type="radio" id="option4" name="opt" value="d" class="inputcom">
+                            <label for="option4" id="opt4" class="fontchng"></label>
+                         </div>
+
+                         <!---Next and Previous Buttons--->
+
+                         <div class="w-100 pt-5 pb-4 d-flex align-items-center justify-content-center">
+                            <div class="w-50 d-flex gap-2">
+                                <input type="submit" value="Previous" class="form-control text-white text-center" onclick="moveprevious()" id="prebtn">
+                                <input type="submit" value="Next" class="form-control text-white text-center" onclick="movenext()" id="nxtbtn">
+                            </div>
+                    </div>
+
+                        <!---container, row and col closing tags--->
+
+                </div>
+            </div>
+        </div>
+
+        <!---Main Div Closing Tag--->
+
+    </main>
+
+    <!---Footer--->
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col text-white bg-primary text-center mb-0 py-2">
+                    <p class="mb-0">&copy; <span id="year"></span>. All Rights Reserved.</p>
+                    <p class="mb-0">Developed By Ali Muhammad.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!---Bootstrap Link js--->
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!---js external file link--->
+
+    <script src="javascript/script.js"></script>
+    
+</body>
+</html>
